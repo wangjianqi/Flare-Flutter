@@ -1,3 +1,8 @@
+## [1.4.2] - 2019-06-20 16:30:37
+
+Fixing issue with rounded rectangles not rendering correctly #107
+Shapes that are collapsed are not when building up the clip path..
+
 ## [1.4.1] - 2019-05-20 10:40:04
 
 Adding an areEquals method to Mat2D.

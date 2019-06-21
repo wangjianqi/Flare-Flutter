@@ -1,3 +1,8 @@
+## [1.5.2] - 2019-06-20 16:33:52
+
+Using latest version of flare_dart which has fixes for rounded rectangles and clipping paths.
+
+
 ## [1.5.1] - 2019-05-20 10:38:30
 
 Added missing call to setViewTransform for controllers. This is now done more efficiently as it is only called when the view transform changes.
