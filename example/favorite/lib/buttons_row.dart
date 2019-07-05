@@ -44,6 +44,7 @@ class _ButtonsState extends State<ButtonsRow> {
                   margin: EdgeInsets.only(right: 10),
                   width: containerSize,
                   height: containerSize,
+                  ///flare动画
                   child: FlareActor("assets/Favorite.flr",
                       shouldClip: false,
                       // Play the animation depending on the state.

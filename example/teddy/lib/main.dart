@@ -73,7 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
                       Container(
                           height: 200,
-						  padding: const EdgeInsets.only(left: 30.0, right:30.0),
+                          padding:
+                              const EdgeInsets.only(left: 30.0, right: 30.0),
                           child: FlareActor(
                             "assets/Teddy.flr",
                             shouldClip: false,

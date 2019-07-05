@@ -66,84 +66,86 @@ class ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding:const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0), child:Container(
-      height: 114.0,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-        color: Colors.black.withOpacity(0.1),
-      ),
-      //   child: Row(
-      //     children: <Widget>[
-      //       Container(
-      //         width: 38.0,
-      //         child: called
-      //             ? const Align(
-      //                 alignment: Alignment.topCenter,
-      //                 child: Icon(
-      //                   CupertinoIcons.phone_solid,
-      //                   color: CupertinoColors.inactiveGray,
-      //                   size: 18.0,
-      //                 ),
-      //               )
-      //             : null,
-      //       ),
-      //       Expanded(
-      //         child: Container(
-      //           decoration: const BoxDecoration(
-      //             border: Border(
-      //               bottom: BorderSide(color: Color(0xFFBCBBC1), width: 0.0),
-      //             ),
-      //           ),
-      //           padding:
-      //               const EdgeInsets.only(left: 1.0, bottom: 9.0, right: 10.0),
-      //           child: Row(
-      //             children: <Widget>[
-      //               Expanded(
-      //                 child: Column(
-      //                   crossAxisAlignment: CrossAxisAlignment.start,
-      //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //                   children: <Widget>[
-      //                     Text(
-      //                       name,
-      //                       maxLines: 1,
-      //                       overflow: TextOverflow.ellipsis,
-      //                       style: const TextStyle(
-      //                         fontWeight: FontWeight.w600,
-      //                         letterSpacing: -0.18,
-      //                       ),
-      //                     ),
-      //                     Text(
-      //                       place,
-      //                       maxLines: 1,
-      //                       overflow: TextOverflow.ellipsis,
-      //                       style: const TextStyle(
-      //                         fontSize: 15.0,
-      //                         letterSpacing: -0.24,
-      //                         color: CupertinoColors.inactiveGray,
-      //                       ),
-      //                     ),
-      //                   ],
-      //                 ),
-      //               ),
-      //               Text(
-      //                 date,
-      //                 style: const TextStyle(
-      //                   color: CupertinoColors.inactiveGray,
-      //                   fontSize: 15.0,
-      //                   letterSpacing: -0.41,
-      //                 ),
-      //               ),
-      //               const Padding(
-      //                 padding: EdgeInsets.only(left: 9.0),
-      //                 child: Icon(CupertinoIcons.info,
-      //                     color: CupertinoColors.activeBlue),
-      //               ),
-      //             ],
-      //           ),
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-    ));
+    return Padding(
+        padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+        child: Container(
+          height: 114.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            color: Colors.black.withOpacity(0.1),
+          ),
+          child: Row(
+            children: <Widget>[
+              Container(
+                width: 38.0,
+                child: called
+                    ? const Align(
+                        alignment: Alignment.topCenter,
+                        child: Icon(
+                          CupertinoIcons.phone_solid,
+                          color: CupertinoColors.inactiveGray,
+                          size: 18.0,
+                        ),
+                      )
+                    : null,
+              ),
+              Expanded(
+                child: Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(color: Color(0xFFBCBBC1), width: 0.0),
+                    ),
+                  ),
+                  padding: const EdgeInsets.only(
+                      left: 1.0, bottom: 9.0, right: 10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: -0.18,
+                              ),
+                            ),
+                            Text(
+                              place,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 15.0,
+                                letterSpacing: -0.24,
+                                color: CupertinoColors.inactiveGray,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Text(
+                        date,
+                        style: const TextStyle(
+                          color: CupertinoColors.inactiveGray,
+                          fontSize: 15.0,
+                          letterSpacing: -0.41,
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 9.0),
+                        child: Icon(CupertinoIcons.info,
+                            color: CupertinoColors.activeBlue),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }

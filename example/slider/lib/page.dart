@@ -27,7 +27,7 @@ class _PageState extends State<Page> with SingleTickerProviderStateMixin {
   }
 
   /// Trigger an update.
-  _update() => setState((){});
+  _update() => setState(() {});
 
   _scheduleDemo(PointerUpEvent details) {
     if (!_houseController.isDemoMode) {
@@ -48,55 +48,58 @@ class _PageState extends State<Page> with SingleTickerProviderStateMixin {
     return Scaffold(
         body: Container(
             child: Listener(
-              onPointerUp: _scheduleDemo,
-              child: Stack(fit: StackFit.expand, children: [
-                FlareActor("assets/Resizing_House.flr",
-                  controller: _houseController,
-                  fit: BoxFit.cover,
-                ),
-                Container(
-                    margin: const EdgeInsets.only(left: 40, right: 40),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(_houseController.rooms.toString() + " ROOMS",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: "Roboto",
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                        Slider(
-                            min: 0,
-                            max: 3,
-                            divisions: 3,
-                            /// Get the room value and adjust it for the slider's min/max value.
-                            value: _houseController.rooms.toDouble() - 3,
-                            onChanged: (double value) {
-                              /// [setState()] triggers a visual refresh with the updated parameters.
-                              setState(() {
-                                /// Stop the demo.
-                                _houseController.isDemoMode = false;
-                                /// When the value of the slider changes, the rooms setter
-                                /// is invoked, which enqueues the new animation.
-                                _houseController.rooms = value.toInt() + 3;
+      onPointerUp: _scheduleDemo,
+      child: Stack(fit: StackFit.expand, children: [
+        FlareActor(
+          "assets/Resizing_House.flr",
+          controller: _houseController,
+          fit: BoxFit.cover,
+        ),
+        Container(
+            margin: const EdgeInsets.only(left: 40, right: 40),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(_houseController.rooms.toString() + " ROOMS",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "Roboto",
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700)),
+                Slider(
+                    min: 0,
+                    max: 3,
+                    divisions: 3,
 
-                                /// Stop a scheduled timer, if any.
-                                if (_currentDemoSchedule != null) {
-                                  _currentDemoSchedule.cancel();
-                                  _currentDemoSchedule = null;
-                                }
-                              });
-                            }),
-                        Text("DRAG TO CHANGE ROOMS",
-                            style: TextStyle(
-                                color: Colors.white.withAlpha(228),
-                                fontFamily: "Roboto",
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700))
-                      ],
-                    ))
-              ]),
-            )));
+                    /// Get the room value and adjust it for the slider's min/max value.
+                    value: _houseController.rooms.toDouble() - 3,
+                    onChanged: (double value) {
+                      /// [setState()] triggers a visual refresh with the updated parameters.
+                      setState(() {
+                        /// Stop the demo.
+                        _houseController.isDemoMode = false;
+
+                        /// When the value of the slider changes, the rooms setter
+                        /// is invoked, which enqueues the new animation.
+                        _houseController.rooms = value.toInt() + 3;
+
+                        /// Stop a scheduled timer, if any.
+                        if (_currentDemoSchedule != null) {
+                          _currentDemoSchedule.cancel();
+                          _currentDemoSchedule = null;
+                        }
+                      });
+                    }),
+                Text("DRAG TO CHANGE ROOMS",
+                    style: TextStyle(
+                        color: Colors.white.withAlpha(228),
+                        fontFamily: "Roboto",
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700))
+              ],
+            ))
+      ]),
+    )));
   }
 }
