@@ -1,3 +1,24 @@
+## [1.4.6] - 2019-09-04 08:48:11
+
+- Prevent iterating null children. Fixes issue #146.
+
+## [1.4.5] - 2019-08-23 09:51:30
+
+Small changes to fix warnings caught by the Dart static analyzer.
+
+## [1.4.4] - 2019-07-24 11:43:51
+
+Adding getArtboard method to Actor class. Allows finding artboards by name.
+
+## [1.4.3] - 2019-07-06 11:08:53
+
+Some cleanup done while fixing issue #104 (using intrinsic artboard size as an option).
+
+## [1.4.2] - 2019-06-20 16:30:37
+
+Fixing issue with rounded rectangles not rendering correctly #107
+Shapes that are collapsed are not when building up the clip path..
+
 ## [1.4.1] - 2019-05-20 10:40:04
 
 Adding an areEquals method to Mat2D.

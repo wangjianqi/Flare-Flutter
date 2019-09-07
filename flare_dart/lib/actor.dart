@@ -1,18 +1,19 @@
 import 'dart:async';
-import "dart:typed_data";
 import "dart:convert";
-import "actor_image.dart";
-import "actor_shape.dart";
+import "dart:typed_data";
+
+import "actor_artboard.dart";
+import "actor_color.dart";
 import "actor_ellipse.dart";
+import "actor_image.dart";
+import "actor_path.dart";
 import "actor_polygon.dart";
 import "actor_rectangle.dart";
+import "actor_shape.dart";
 import "actor_star.dart";
 import "actor_triangle.dart";
-import "actor_path.dart";
-import "actor_color.dart";
-import "stream_reader.dart";
 import "block_types.dart";
-import "actor_artboard.dart";
+import "stream_reader.dart";
 
 abstract class Actor {
   int maxTextureIndex = 0;
@@ -22,6 +23,10 @@ abstract class Actor {
   Actor();
 
   ActorArtboard get artboard => _artboards.isNotEmpty ? _artboards.first : null;
+  ActorArtboard getArtboard(String name) => name == null
+      ? artboard
+      : _artboards.firstWhere((artboard) => artboard?.name == name,
+          orElse: () => null);
 
   int get version {
     return _version;

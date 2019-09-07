@@ -1,3 +1,35 @@
+## [1.5.8] - 2019-09-04 08:47:31
+
+- Bump flare_dart dependency version to get fix for iterating null children. Issue #146.
+
+## [1.5.7] - 2019-08-26 10:39:49
+
+- Clip the artboard based on settings from Flare.
+
+## [1.5.6] - 2019-08-23 09:52:13
+
+- Clamp opacity values into 0..1 range before creating color for paint.
+
+## [1.5.5] - 2019-07-24 11:44:36
+
+ - Adding artboard option to FlareActor. Use this to change which artboard gets displayed by the FlareActor widget.
+ - Fixed incorrect signature of load method. If you were deriving FlareRenderBox, you'll need to update it to match. It's a minor change from void to Future<void>.
+ - Added some documentation to the FlareActor parameters.
+
+## [1.5.4] - 2019-07-08 21:10:50
+
+ - Using Uint16List for vertex indices now that Flutter Stable has been updated.
+
+## [1.5.3] - 2019-07-06 11:09:44
+
+ - Fixing an intialization error when a node has null children.
+ - FlareActor widget can now size itself via the sizeFromArtboard named parameter, based on feedback from issue #104.
+
+## [1.5.2] - 2019-06-20 16:33:52
+
+ Using latest version of flare_dart which has fixes for rounded rectangles and clipping paths.
+
+
 ## [1.5.1] - 2019-05-20 10:38:30
 
 Added missing call to setViewTransform for controllers. This is now done more efficiently as it is only called when the view transform changes.

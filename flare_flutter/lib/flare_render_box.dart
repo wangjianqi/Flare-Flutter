@@ -18,6 +18,30 @@ abstract class FlareRenderBox extends RenderBox {
   int _frameCallbackID;
   double _lastFrameTime = 0.0;
   final List<FlareCacheAsset> _assets = [];
+  bool _useIntrinsicSize = false;
+
+  bool get useIntrinsicSize => _useIntrinsicSize;
+  set useIntrinsicSize(bool value) {
+    if (_useIntrinsicSize == value) {
+      return;
+    }
+    _useIntrinsicSize = value;
+    if (parent != null) {
+      markNeedsLayoutForSizedByParentChange();
+    }
+  }
+
+  Size _intrinsicSize;
+  Size get intrinsicSize => _intrinsicSize;
+  set intrinsicSize(Size value) {
+    if (_intrinsicSize == value) {
+      return;
+    }
+    _intrinsicSize = value;
+    if (parent != null) {
+      markNeedsLayoutForSizedByParentChange();
+    }
+  }
 
   AssetBundle get assetBundle => _assetBundle;
   set assetBundle(AssetBundle value) {
@@ -59,15 +83,22 @@ abstract class FlareRenderBox extends RenderBox {
     }
   }
 
+   @override
+   bool get sizedByParent => !_useIntrinsicSize || _intrinsicSize == null;
+
   @override
-  bool get sizedByParent => true;
+  void performLayout() {
+    if (!sizedByParent) {
+      size = constraints.constrain(_intrinsicSize);
+    }
+  }
 
   @override
   bool hitTestSelf(Offset screenOffset) => true;
 
   @override
   void performResize() {
-    size = constraints.biggest;
+    size = _useIntrinsicSize ? constraints.smallest : constraints.biggest;
   }
 
   @override
@@ -205,7 +236,7 @@ abstract class FlareRenderBox extends RenderBox {
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
-  void _load() async {
+  Future<void> _load() async {
     if (_isLoading) {
       return;
     }
@@ -216,7 +247,7 @@ abstract class FlareRenderBox extends RenderBox {
   }
 
   /// Perform any loading logic necessary for this scene.
-  void load() async {}
+  Future<void> load() async {}
 
   void _unload() {
     for (final FlareCacheAsset asset in _assets) {
